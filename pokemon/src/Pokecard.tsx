@@ -8,10 +8,13 @@ export interface PokecardProps {
   exp: number;
 }
 
-const POKE_API = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+// const POKE_API = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+const POKE_API = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
+
+const padToThree = (number: number) => number <= 999 ? `00${number}`.slice(-3) : number;
 
 export const Pokecard = ({id, name, type, exp}: PokecardProps) => {
-  const imgSrc = `${POKE_API}${id}.png`;
+  const imgSrc = `${POKE_API}${padToThree(id)}.png`;
   return <div className="Pokecard">
     <h1 className="Pokecard-title">{name}</h1>
     <img src={imgSrc} alt={name}/>
