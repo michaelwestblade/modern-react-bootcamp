@@ -23,9 +23,11 @@ export const Pokegame = (props: PokegameProps) => {
     handOne.push(randomPokemon);
   }
 
+  let exp1 = handOne.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
+  let exp2 = handTwo.reduce((exp, pokemon) => exp + pokemon.base_experience, 0);
   return <div className="Pokegame">
     <h1>Pokegame</h1>
-    <Pokedex pokemon={handOne}/>
-    <Pokedex pokemon={handTwo}/>
+    <Pokedex title="Hand One" pokemon={handOne} exp={exp1} isWinner={exp1 > exp2}/>
+    <Pokedex title="Hand Two" pokemon={handTwo} exp={exp2} isWinner={exp2 > exp1}/>
   </div>
 }

@@ -4,6 +4,9 @@ import { Pokecard } from './Pokecard';
 
 export interface PokedexProps {
   pokemon?: {id: number; name: string; type: string; base_experience: number;}[];
+  title?: string;
+  isWinner?: boolean;
+  exp?: number;
 }
 
 const defaultPokemon = [
@@ -18,9 +21,12 @@ const defaultPokemon = [
 ];
 const defaultProps = {pokemon: defaultPokemon};
 
-export const Pokedex = ({pokemon = defaultPokemon}: PokedexProps) => {
+export const Pokedex = ({pokemon = defaultPokemon, title = "Pokedex", exp, isWinner}: PokedexProps) => {
+  const subTitle = isWinner ? <h2 className="Pokedex-winner">WINNER</h2> : <h2 className="Pokedex-loser">LOSER</h2>;
   return <div className="Pokedex">
-    <h1>Pokedex</h1>
+    <h1>{title}</h1>
+    <p>Total Exp: {exp}</p>
+    {subTitle}
     <div className="Pokedex-cards">
       {pokemon.map(pokemon => <Pokecard key={pokemon.id} id={pokemon.id} name={pokemon.name} type={pokemon.type} exp={pokemon.base_experience}/>)}
     </div>
