@@ -1,4 +1,4 @@
-import { useToggle } from './useToggle';
+import { useToggle } from './hooks/useToggle';
 
 export const Toggler = () => {
   const [isHappy, toggleIsHappy] = useToggle( true );
